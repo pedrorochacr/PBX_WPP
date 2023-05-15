@@ -27,9 +27,9 @@ app.get('/api/client', async (req, res) => {
   
   
     const response= await axios.post('https://app.growhats.com.br/sendmsg/', body)
-    // Aqui você pode manipular a resposta da segunda API, se necessário
-
-    res.json(response.data);
+   
+    console.log(response.data)
+    
     if (!name | !number) {
       return res.status(400).json({ error: 'Nome e número são obrigatórios' });
     }

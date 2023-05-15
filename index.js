@@ -6,11 +6,9 @@ const port = 3000;
 
 app.use(express.json());
 
-app.get('/api/client', async (req, res) => {
+app.post('/api/client', async (req, res) => {
   try {
-    const { name, number } = req.query;
-
-    
+    const { name, number } = req.body;
 
     // Aqui você pode adicionar a lógica necessária para manipular os dados do cliente
 
@@ -22,7 +20,7 @@ app.get('/api/client', async (req, res) => {
         "type": "0",
         "token": "2YGEM-63649-37130-27470",
         "numero": "5531971514755",
-        "text": "Olá, mari Jack!"
+        "text": "Teste"
       };
   
   

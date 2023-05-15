@@ -6,7 +6,7 @@ const port = 3000;
 
 app.use(express.json());
 
-app.post('/api/client', async (req, res) => {
+app.get('/api/client', async (req, res) => {
   try {
     const { name, number } = req.query;
 

@@ -15,7 +15,22 @@ app.get('/api/client', async (req, res) => {
     // Aqui você pode adicionar a lógica necessária para manipular os dados do cliente
 
     console.log(name)
-    if (!name) {
+    console.log(number)
+
+
+    const body = {
+        "type": "0",
+        "token": "2YGEM-63649-37130-27470",
+        "numero": "5531971514755",
+        "text": "Olá, mari Jack!"
+      };
+  
+  
+    const response= await axios.post('https://app.growhats.com.br/sendmsg/', body)
+    // Aqui você pode manipular a resposta da segunda API, se necessário
+
+    res.json(response.data);
+    if (!name | !number) {
       return res.status(400).json({ error: 'Nome e número são obrigatórios' });
     }
     else{

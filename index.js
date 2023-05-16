@@ -6,12 +6,12 @@ const port = 3000;
 
 app.use(express.json());
 
-app.post('/api/client', async (req, res) => {
+app.post('/api/client', async (req, res) => {      
   try {
-    const { name, number } = req.body;
-
+    const { name, number,mensagem } = req.body;
+   
     // Aqui você pode adicionar a lógica necessária para manipular os dados do cliente
-
+    
     console.log(name)
     console.log(number)
 
@@ -19,14 +19,14 @@ app.post('/api/client', async (req, res) => {
     const body = {
         "type": "0",
         "token": "2YGEM-63649-37130-27470",
-        "numero": "5531971514755",
-        "text": "Teste"
+        "numero": number,
+        "text": mensagem
       };
   
   
     const response= await axios.post('https://app.growhats.com.br/sendmsg/', body)
    
-    console.log(response.data)
+    
     
     if (!name | !number) {
       return res.status(400).json({ error: 'Nome e número são obrigatórios' });

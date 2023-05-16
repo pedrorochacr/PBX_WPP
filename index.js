@@ -19,7 +19,7 @@ app.post('/api/client', async (req, res) => {
     const body = {
         "type": "0",
         "token": "2YGEM-63649-37130-27470",
-        "numero": number,
+        "numero": "55"+number,
         "text": mensagem
       };
   

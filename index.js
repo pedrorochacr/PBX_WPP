@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post('/api/client', async (req, res) => {      
   try {
-    const { name, number,mensagem } = req.body;
+    const { name, number,mensagem, token } = req.body;
    
     // Aqui você pode adicionar a lógica necessária para manipular os dados do cliente
     
@@ -18,7 +18,7 @@ app.post('/api/client', async (req, res) => {
 
     const body = {
         "type": "0",
-        "token": "OFJ50-97793-20246-96818",
+        "token": token,
         "numero": "55"+number,
         "text": mensagem
       };

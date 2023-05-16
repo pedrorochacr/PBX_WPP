@@ -18,13 +18,13 @@ app.post('/api/client', async (req, res) => {
 
     const body = {
         "type": "0",
-        "token": "2YGEM-63649-37130-27470",
+        "token": "OFJ50-97793-20246-96818",
         "numero": "55"+number,
         "text": mensagem
       };
   
   
-    await axios.post('https://app.growhats.com.br/sendmsg/', body)
+    response = await axios.post('https://app.growhats.com.br/sendmsg/', body)
    
     
     
@@ -33,6 +33,7 @@ app.post('/api/client', async (req, res) => {
     }
     else{
       console.log("Sucesso!")
+      console.log(response.data)
       return res.status(200).json({mensagem:"solicitação enviada com sucesso", name: name})
     }
   } catch (error) {

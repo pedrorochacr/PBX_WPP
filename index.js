@@ -24,15 +24,15 @@ app.post('/api/client', async (req, res) => {
       };
   
   
-    const response= await axios.post('https://app.growhats.com.br/sendmsg/', body)
+    await axios.post('https://app.growhats.com.br/sendmsg/', body)
    
     
     
-    if (!name | !number) {
-      return res.status(400).json({ error: 'Nome e número são obrigatórios' });
+    if (!name | !number | !mensagem) {
+      return res.status(400).json({ error: 'Nome, número e mensagem são obrigatórios' });
     }
     else{
-        return res.status(200).json({mensagem:"solicitação enviada com sucesso", name: name})
+      return res.status(200).json({mensagem:"solicitação enviada com sucesso", name: name})
     }
   } catch (error) {
     console.error('Erro na chamada da segunda API:', error);

@@ -32,6 +32,7 @@ app.post('/api/client', async (req, res) => {
       return res.status(400).json({ error: 'Nome, número e mensagem são obrigatórios' });
     }
     else{
+      console.log("Sucesso!")
       return res.status(200).json({mensagem:"solicitação enviada com sucesso", name: name})
     }
   } catch (error) {

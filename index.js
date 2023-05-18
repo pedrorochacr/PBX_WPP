@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-
 app.post('/api/client', async (req, res) => {      
   try {
     const { name, number,mensagem, token } = req.body;
@@ -28,7 +27,9 @@ app.post('/api/client', async (req, res) => {
    
     
     
-    if (!name | !number | !mensagem) {
+    if (!name | !number ) {
+      console.log("Faltando alguma variável")
+      console.log(response.data)
       return res.status(400).json({ error: 'Nome, número e mensagem são obrigatórios' });
     }
     else{

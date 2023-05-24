@@ -21,11 +21,9 @@ app.post('/api/client', async (req, res) => {
         "numero": "55"+number,
         "text": mensagem
       };
-  
-  
-    response = await axios.post('https://app.growhats.com.br/sendmsg/', body)
-   
-    
+     
+    urlWpp = process.env.APIWhatssApp
+    response = await axios.post(urlWpp, body)
     
     if (!name | !number ) {
       console.log("Faltando alguma variável")

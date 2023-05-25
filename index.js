@@ -9,7 +9,6 @@ app.post('/api/client', async (req, res) => {
   try {
     const { name, number,mensagem, token } = req.body;
    
-    // Aqui você pode adicionar a lógica necessária para manipular os dados do cliente
     
     console.log(name)
     console.log(number)

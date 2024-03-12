@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -21,7 +22,7 @@ app.post('/api/client', async (req, res) => {
         "text": mensagem
       };
      
-    response = await axios.post( process.env.APIWhatssApp, body)
+    response = await axios.post(process.env.APIWhatssApp, body)
     console.log(response.data)
     if (!name | !number ) {
       console.log("Faltando alguma variável")

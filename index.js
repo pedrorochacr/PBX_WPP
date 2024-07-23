@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -17,10 +18,10 @@ app.post('/api/client', async (req, res) => {
         "token": token,
         "numero": "55"+number,
         "text": mensagem
-    };
-    console.log(process.env.APIWhatssApp)
+      };
+     
     response = await axios.post(process.env.APIWhatssApp, body)
-    console.log("response",response)
+    console.log(response.data)
     if (!name | !number ) {
       console.log("Faltando alguma variável")
       return res.status(400).json({ error: 'Nome e número  são obrigatórios' });

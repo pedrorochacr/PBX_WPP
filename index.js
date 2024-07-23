@@ -3,7 +3,7 @@ const axios = require('axios');
 require('dotenv').config();
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 require('dotenv').config();
 app.use(express.json());
 app.post('/api/client', async (req, res) => {      

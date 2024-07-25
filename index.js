@@ -8,19 +8,44 @@ require('dotenv').config();
 app.use(express.json());
 app.post('/api/client', async (req, res) => {      
   try {
-    const { name, number,mensagem, token } = req.body;
+    const { name, number,mensagem, token, urlImagem, urlArquivo, nomeArquivo  } = req.body;
        
     console.log(name)
     console.log(number)
 
-    const body = {
+    if(mensagem && !urlImagem){
+      console.log("Enviou mensagem")
+      const body = {
         "type": "0",
         "token": token,
         "numero": "55"+number,
         "text": mensagem
       };
-     
-    response = await axios.post(process.env.APIWhatssApp, body)
+      response = await axios.post(process.env.APIWhatssApp, body);
+    }
+    if(urlImagem){
+      const body = {
+        "type": "1",
+        "token": token,
+        "numero": "55"+number,
+        "text": mensagem,
+        "url_arquivo": urlImagem
+      };
+      response = await axios.post(process.env.APIWhatssApp, body);
+    }
+    if(urlArquivo){
+      const body = {
+        "type": "2",
+        "token": token,
+        "numero": "55"+number,
+        "filename": nomeArquivo,
+        "url_arquivo": urlArquivo
+
+
+      };
+      response = await axios.post(process.env.APIWhatssApp, body);
+    }
+
     console.log(response.data)
     if (!name | !number ) {
       console.log("Faltando alguma variável")

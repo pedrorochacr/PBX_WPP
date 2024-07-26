@@ -8,11 +8,12 @@ require('dotenv').config();
 app.use(express.json());
 app.post('/api/client', async (req, res) => {      
   try {
-    const { name, number,mensagem, token, urlImagem, urlArquivo, nomeArquivo  } = req.body;
+    const { name, number,mensagem, token, urlImagem, urlArquivo, nomeArquivo, urlVideo, urlAudio  } = req.body;
        
     console.log(name)
     console.log(number)
 
+    let response;
     if(mensagem && !urlImagem){
       console.log("Enviou mensagem")
       const body = {
@@ -21,6 +22,8 @@ app.post('/api/client', async (req, res) => {
         "numero": "55"+number,
         "text": mensagem
       };
+      console.log(body)
+
       response = await axios.post(process.env.APIWhatssApp, body);
     }
     if(urlImagem){
@@ -45,9 +48,26 @@ app.post('/api/client', async (req, res) => {
       };
       response = await axios.post(process.env.APIWhatssApp, body);
     }
-
+    if(urlVideo){
+      const body = {
+        "type": "4",
+        "token": token,
+        "numero": "55"+number,
+        "url_arquivo": urlVideo
+      };
+      response = await axios.post(process.env.APIWhatssApp, body);
+    }
+    if(urlAudio){
+      const body = {
+        "type": "3",
+        "token": token,
+        "numero": "55"+number,
+        "url_arquivo": urlAudio
+      };
+      response = await axios.post(process.env.APIWhatssApp, body);
+    }
     console.log(response.data)
-    if (!name | !number ) {
+    if (!number ) {
       console.log("Faltando alguma variável")
       return res.status(400).json({ error: 'Nome e número  são obrigatórios' });
     }
